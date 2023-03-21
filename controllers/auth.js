@@ -44,7 +44,7 @@ const login = async ( req, res ) => {
 
     try {
 
-        const user = await User.findOne({ email })
+        const user = await User.findOne({ email },null, { maxTimeMS: 1000000000 })
         if ( !user ) {
            return res.status(400).send( successFalse( 'The user with this email does not exist' ) );
         }
