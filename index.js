@@ -25,6 +25,10 @@ app.use('/api/auth', authRoutes);
 const eventsRoutes = require('./routes/events');
 app.use('/api/events', eventsRoutes);
 
+app.get('*',( req, res ) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 // Listen petitions;
 const PORT = process.env.PORT || 2000;
 app.listen( PORT, () => console.log(`Server listen on port ${ PORT }`));
